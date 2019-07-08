@@ -9,4 +9,9 @@ if r - l >= base:
 elif r_mod <= l_mod:
     print(0)
 else:
-    print(l_mod * (l_mod + 1))
+    # print(l_mod * (l_mod + 1))
+    ans = base
+    for i in range(l, r+1):
+        for j in range(i+1, r+1):
+            ans = min(ans, (i*j) % base)
+    print(ans)
