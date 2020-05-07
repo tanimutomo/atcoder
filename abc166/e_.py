@@ -1,21 +1,21 @@
 n = int(input())
 a = list(map(int, input().split()))
 
-add = dict()
-sub = dict()
-for i, ai in enumerate(a):
-    if i+ai in add.keys():
-        add[i+ai] += 1
-    else:
-        add[i+ai] = 1
-    if i-ai in sub.keys():
-        add[i-ai] += 1
-    else:
-        add[i-ai] = 1
+# i < j
+# j - i = Aj + Ai
+# j - Aj = i + Ai
 
-cnt = 0
-for ak, av in add.items():
-    if ak not in sub.keys(): continue
-    cnt += av*sub[ak]
+ans = 0
+adds = dict()
+for j in range(n):
+    sub = j - a[j]
+    if sub in adds.keys():
+        ans += adds[sub]
 
-print(cnt)
+    add = j + a[j]
+    if add in adds.keys():
+        adds[add] += 1
+    else:
+        adds[add] = 1
+
+print(ans)
