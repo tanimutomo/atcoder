@@ -1,17 +1,17 @@
 #!/bin/bash
 
-dirname=$1
+dirpath=$1
 
-if [ -z $dirname ]; then
-  echo "Please specify dirname (arg 1)"
+if [ -z $dirpath ]; then
+  echo "Please specify dirpath (arg 1)"
   exit 1
 fi
 
-mkdir -p $(pwd)/$dirname
+mkdir -p $(pwd)/$dirpath
 
-selfpath=$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )
+selfpath=$( cd "$( dirpath "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )
 
 files=(a b c d e f)
 for file in "${files[@]}"; do
-  cp $selfpath/template.py $(pwd)/$dirname/$file.py
+  cp $selfpath/template.py $(pwd)/$dirpath/$file.py
 done
