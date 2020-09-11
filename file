@@ -1,0 +1,12 @@
+#!/bin/bash
+
+filename=$1
+
+if [ -z "$filename" ]; then
+  echo "Please specify filename (arg 1)"
+  exit 1
+fi
+
+selfpath="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )" 
+
+cp $selfpath/template.py $(pwd)/$filename

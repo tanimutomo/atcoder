@@ -1,0 +1,17 @@
+#!/bin/bash
+
+dirname=$1
+
+if [ -z $dirname ]; then
+  echo "Please specify dirname (arg 1)"
+  exit 1
+fi
+
+mkdir -p $(pwd)/$dirname
+
+selfpath=$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )
+
+files=(a b c d e f)
+for file in "${files[@]}"; do
+  cp $selfpath/template.py $(pwd)/$dirname/$file.py
+done
